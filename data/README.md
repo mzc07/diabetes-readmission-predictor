@@ -19,13 +19,6 @@ De acuerdo con la fuente, se cumplieron las siguientes condiciones para asegurar
 | 149190 | 55629189 | Caucasian | Female | ... | Yes | >30 |
 | ... | ... | ... | ... | ... | ... | ...|
 | 443867222 | 175429310 | Caucasian | Male | ... | No | NO |
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-- `IDS_mapping.csv`
-=======
->>>>>>> temp-fix
 - `IDS_mapping.csv`
 
 | admission_type_id | description |
@@ -50,9 +43,4 @@ De acuerdo con la fuente, se cumplieron las siguientes condiciones para asegurar
 | ... | ... |
 | 26 | Transfer from Hospice |
 
-<<<<<<< HEAD
 *Este dataset está licenciado bajo una Atribución Creative Commons 4.0 Internacional Licencia (CC BY 4.0).*
-=======
-*Este dataset está licenciado bajo una Atribución Creative Commons 4.0 Internacional Licencia (CC BY 4.0).*
->>>>>>> cc118b6 (Readme y expansion de docs)
->>>>>>> temp-fix
