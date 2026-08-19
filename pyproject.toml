@@ -1,0 +1,27 @@
+[project]
+name = "diabetes-readmission-predictor"
+version = "0.1.0"
+description = "Predict if the pacient will be readmitted in less than 30 days"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Martin Ariza", email = "martin.ariza.camargo@gmail.com"},
+    { name = "Ivanna Alvarez", email = "ivannaisabelalvarezs@gmail.com"},
+    { name = "Maria Rueda", email="julianarp8@gmail.com"}
+]
+
+dependencies = [
+    "numpy>=2.2.6",
+    "pandas>=2.3.3",
+    "scikit-learn>=1.7.2",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
