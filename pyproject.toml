@@ -28,5 +28,6 @@ testpaths = ["tests"]
 
 [dependency-groups]
 dev = [
+    "ipykernel>=7.3.0",
     "ruff>=0.16.3",
 ]
