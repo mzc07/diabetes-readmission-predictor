@@ -7,4 +7,4 @@
 
 | Índice | Descripción |
 | --- | --- |
-| (1. Datos)[data/README.md] | Marco historico del dataset y una introducción al problema. |
+| [1. Datos](data/README.md) | Marco historico del dataset y una introducción al problema. |
