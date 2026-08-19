@@ -12,10 +12,12 @@ De acuerdo con la fuente, se cumplieron las siguientes condiciones para asegurar
 
 ## Composición del dataset
 - `diabetic_data.csv`
+
 | encounter_id | patient_nbr | race | gender | ... | diabetesMed | readmitted |
 | --- | --- | --- | --- | --- | --- | ---|
 | 2278392 | 8222157 | Caucasian | Female | ... | No | NO | 
 | 149190 | 55629189 | Caucasian | Female | ... | Yes | >30 |
 | ... | ... | ... | ... | ... | ... | ...|
 | 443867222 | 175429310 | Caucasian | Male | ... | No | NO |
+
 - `IDS_mapping.csv`
