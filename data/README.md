@@ -30,13 +30,16 @@ De acuerdo con la fuente, se cumplieron las siguientes condiciones para asegurar
 | 8 | Not Mapped |
 
 | discharge_disposition_id | description |
+| --- | --- |
 | 1 | Discharged to home |
 | 2 | Discharged/transferred to another short term hospital |
 | 3 | Discharged/transferred to SNF |
 | ... | ... |
 | 29 | Discharged/transferred to a Critical Access Hospital (CAH). |
 
+
 | admission_source_id | description |
+| --- | --- |
 | 1 | Physician Referral |
 | 2 | Clinic Referral |
 | 3 | HMO Referral |
