@@ -46,4 +46,6 @@ De acuerdo con la fuente, se cumplieron las siguientes condiciones para asegurar
 | ... | ... |
 | 26 | Transfer from Hospice |
 
+**Objetivo:** Clasificar cuales son los factores que influyen en que un paciente sea reingresado en menos de 30 días-
+
 *Este dataset está licenciado bajo una Atribución Creative Commons 4.0 Internacional Licencia (CC BY 4.0).*
