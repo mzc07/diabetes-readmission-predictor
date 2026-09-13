@@ -54,7 +54,7 @@ def sentinel_value_scan(
 ) -> pd.DataFrame:
     """
     Busca valores centinela típicos que hayan sobrevivido en columnas
-    categóricas tipo object, incluso después de la conversión a NaN aplicada en el loader.
+    categóricas tipo object, incluso después de conversión a NaN aplicada en el loader.
     """
     if candidates is None:
         candidates = [
