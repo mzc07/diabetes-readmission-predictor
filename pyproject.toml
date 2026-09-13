@@ -19,6 +19,9 @@ dependencies = [
 [tool.ruff]
 line-length = 88
 target-version = "py311"
+exclude = [
+    "*.ipynb",
+]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "W", "UP"]
