@@ -5,7 +5,7 @@ Descripción: Funciones de análisis bivariado (cada variable contra target o en
 """
 
 import pandas as pd
-from scipy import stats
+from scipy import chi2_contingency, stats
 
 
 def correlation_matrix(
@@ -39,18 +39,24 @@ def high_correlation_pairs(
     )
 
 
-def categorical_vs_target_chi2(
-    df: pd.DataFrame, categorical_cols: list[str], target_col: str
-) -> pd.DataFrame:
-    """Test chi-cuadrado entre cada columna categórica y el target."""
-    rows = []
-    for col in categorical_cols:
-        tabla = pd.crosstab(df[col], df[target_col])
-        if tabla.shape[0] < 2 or tabla.shape[1] < 2:
+def categorical_vs_target_chi2(df, target_col):
+    results = []
+    cat_cols = df.select_dtypes(include=["object", "category"]).columns
+    for col in cat_cols:
+        if col == target_col:
             continue
-        chi2, p, dof, _ = stats.chi2_contingency(tabla)
-        rows.append({"columna": col, "chi2": round(chi2, 2), "p_valor": p, "dof": dof})
-    return pd.DataFrame(rows).sort_values("chi2", ascending=False)
+        # Omitir columnas con un solo valor único (varianza cero)
+        if df[col].nunique(dropna=True) <= 1:
+            continue
+        contingency_table = pd.crosstab(df[col], df[target_col])
+        # Validar que no existan filas o columnas que sumen cero
+        if (contingency_table.sum(axis=1) == 0).any() or (
+            contingency_table.sum(axis=0) == 0
+        ).any():
+            continue
+        chi2, p_val, dof, _ = chi2_contingency(contingency_table)
+        results.append({"variable": col, "chi2": chi2, "p_value": p_val, "dof": dof})
+    return pd.DataFrame(results).sort_values(by="p_value")
 
 
 def numeric_vs_target_test(
