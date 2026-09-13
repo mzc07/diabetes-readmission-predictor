@@ -30,7 +30,7 @@ def missing_value_report(df: pd.DataFrame) -> pd.DataFrame:
 def duplicate_report(df: pd.DataFrame, key_columns: list[str]) -> dict:
     """
     Reporta duplicados totales y duplicados por llave(s) de negocio.
-    `patient_nbr` NO debe ser único — lo relevante es cuántos encuentros 
+    `patient_nbr` NO debe ser único — lo relevante es cuántos encuentros
     por paciente hay, para decidir el split agrupado.
     """
     result = {
@@ -43,17 +43,30 @@ def duplicate_report(df: pd.DataFrame, key_columns: list[str]) -> dict:
         conteo_por_llave = df[col].value_counts()
         result[f"{col}_valores_unicos"] = int(conteo_por_llave.shape[0])
         result[f"{col}_max_repeticiones"] = int(conteo_por_llave.max())
-        result[f"{col}_pacientes_con_mas_de_1_encuentro"] = int((conteo_por_llave > 1).sum())
+        result[f"{col}_pacientes_con_mas_de_1_encuentro"] = int(
+            (conteo_por_llave > 1).sum()
+        )
     return result
 
 
-def sentinel_value_scan(df: pd.DataFrame, candidates: list[str] | None = None) -> pd.DataFrame:
+def sentinel_value_scan(
+    df: pd.DataFrame, candidates: list[str] | None = None
+) -> pd.DataFrame:
     """
-    Busca valores centinela típicos que hayan sobrevivido en columnas 
+    Busca valores centinela típicos que hayan sobrevivido en columnas
     categóricas tipo object, incluso después de la conversión a NaN aplicada en el loader.
     """
     if candidates is None:
-        candidates = ["?", "Unknown/Invalid", "None", "NULL", "Not Available", "Not Mapped", "-1", "9999"]
+        candidates = [
+            "?",
+            "Unknown/Invalid",
+            "None",
+            "NULL",
+            "Not Available",
+            "Not Mapped",
+            "-1",
+            "9999",
+        ]
 
     rows = []
     for col in df.select_dtypes(include="object").columns:
@@ -64,7 +77,9 @@ def sentinel_value_scan(df: pd.DataFrame, candidates: list[str] | None = None) -
     return pd.DataFrame(rows)
 
 
-def numeric_out_of_range_report(df: pd.DataFrame, rules: dict[str, tuple[float, float]]) -> pd.DataFrame:
+def numeric_out_of_range_report(
+    df: pd.DataFrame, rules: dict[str, tuple[float, float]]
+) -> pd.DataFrame:
     """
     Verifica rangos físicamente imposibles en columnas numéricas.
     """
