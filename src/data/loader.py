@@ -5,6 +5,7 @@ Descripción: Carga y valida el dataset diabetic_data.csv desde disco.
 """
 
 from pathlib import Path
+
 import pandas as pd
 
 # Columnas identificadoras
@@ -14,7 +15,9 @@ ID_COLUMNS = ["encounter_id", "patient_nbr"]
 SENTINEL_VALUES = ["?", "None", "Not Available", "Not Mapped", "NULL"]
 
 
-def load_diabetic_data(path: str | Path, treat_sentinels_as_na: bool = True) -> pd.DataFrame:
+def load_diabetic_data(
+    path: str | Path, treat_sentinels_as_na: bool = True
+) -> pd.DataFrame:
     """
     Carga diabetic_data.csv desde disco, reemplazando los centinelas conocidos
     por NaN real si `treat_sentinels_as_na` es True.
@@ -35,7 +38,11 @@ def load_diabetic_data(path: str | Path, treat_sentinels_as_na: bool = True) -> 
     ]
 
     # Reemplaza los centinelas conocidos por NaN real si `treat_sentinels_as_na` es True
-    na_values = {col: SENTINEL_VALUES for col in sentinel_only_columns} if treat_sentinels_as_na else None
+    na_values = (
+        {col: SENTINEL_VALUES for col in sentinel_only_columns}
+        if treat_sentinels_as_na
+        else None
+    )
 
     # Carga el CSV con los valores NaN reemplazados si es necesario
     df = pd.read_csv(path, na_values=na_values, keep_default_na=True, low_memory=False)
@@ -59,17 +66,21 @@ def load_id_mappings(path: str | Path) -> dict[str, pd.DataFrame]:
         # Fila en blanco -> separador entre tablas
         if all(v == "" or v is None for v in row):
             continue
-        # Fila de encabezado de una nueva tabla, ej: ["admission_type_id", "description"]   
+        # Fila de encabezado de una nueva tabla, ej: ["admission_type_id", "description"]
         if row[0].endswith("_id"):
             if current_name is not None:
-                mappings[current_name] = pd.DataFrame(current_rows, columns=["id", "description"])
+                mappings[current_name] = pd.DataFrame(
+                    current_rows, columns=["id", "description"]
+                )
             current_name = row[0]
             current_rows = []
         else:
             current_rows.append(row[:2])
 
     if current_name is not None:
-        mappings[current_name] = pd.DataFrame(current_rows, columns=["id", "description"])
+        mappings[current_name] = pd.DataFrame(
+            current_rows, columns=["id", "description"]
+        )
 
     return mappings
 
@@ -77,7 +88,7 @@ def load_id_mappings(path: str | Path) -> dict[str, pd.DataFrame]:
 def validate_schema(df: pd.DataFrame) -> list[str]:
     """
     Valida que las columnas esperadas existan y que las llaves
-    identificadoras no tengan nulos. Devuelve una lista de strings 
+    identificadoras no tengan nulos. Devuelve una lista de strings
     con los problemas encontrados,para reportarlos al notebook.
     """
     problems: list[str] = []
@@ -93,7 +104,9 @@ def validate_schema(df: pd.DataFrame) -> list[str]:
 
     if "encounter_id" in df.columns and df["encounter_id"].duplicated().any():
         n_dup = df["encounter_id"].duplicated().sum()
-        problems.append(f"'encounter_id' debería ser único por fila, pero hay {n_dup} duplicados")
+        problems.append(
+            f"'encounter_id' debería ser único por fila, pero hay {n_dup} duplicados"
+        )
 
     if "readmitted" in df.columns:
         valores_validos = {"NO", "<30", ">30"}
