@@ -1,7 +1,7 @@
 """
 Archivo: bivariate.py
 Nombre: Juliana Rueda Perez (2251801)
-Descripción: Funciones de análisis bivariado (cada variable contra el target o entre sí).
+Descripción: Funciones de análisis bivariado (cada variable contra target o entre sí).
 """
 
 import pandas as pd
