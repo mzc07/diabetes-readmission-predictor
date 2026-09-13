@@ -5,8 +5,8 @@ Descripción: Funciones de análisis bivariado (cada variable contra target o en
 """
 
 import pandas as pd
-from scipy import chi2_contingency, stats
-
+from scipy import stats
+from scipy.stats import chi2_contingency
 
 def correlation_matrix(
     df: pd.DataFrame, numeric_cols: list[str], method: str = "spearman"
