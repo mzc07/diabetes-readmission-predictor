@@ -52,7 +52,8 @@ def load_diabetic_data(
 def load_id_mappings(path: str | Path) -> dict[str, pd.DataFrame]:
     """
     Parsea IDS_mapping.csv y devuelve un diccionario de DataFrames,
-    uno por tabla de mapeo (admission_type_id, discharge_disposition_id, admission_source_id).
+    uno por tabla de mapeo (admission_type_id, discharge_disposition_id,
+    admission_source_id).
     """
     path = Path(path)
     raw = pd.read_csv(path, header=None, dtype=str, keep_default_na=False)
@@ -66,7 +67,7 @@ def load_id_mappings(path: str | Path) -> dict[str, pd.DataFrame]:
         # Fila en blanco -> separador entre tablas
         if all(v == "" or v is None for v in row):
             continue
-        # Fila de encabezado de una nueva tabla, ej: ["admission_type_id", "description"]
+        # Fila de encabezado de una nueva tabla ["admission_type_id", "description"]
         if row[0].endswith("_id"):
             if current_name is not None:
                 mappings[current_name] = pd.DataFrame(
