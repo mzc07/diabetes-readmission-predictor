@@ -4,7 +4,9 @@
 <p align="center"><img src="docs/assets/banner.png" width="800" height="300" alt="Banner del proyecto"></p>
 
 ## Autores
-Ivanna Álvarez - 2251805, Martín Ariza - 2251516, Juliana Rueda - 2251801
+- Ivanna Álvarez - 2251805
+- Martín Ariza - 2251516
+- Juliana Rueda - 2251801
 
 ## Objetivo del Proyecto
 Predecir si un paciente diabético será readmitido en menos de 30 días tras su alta hospitalaria.
