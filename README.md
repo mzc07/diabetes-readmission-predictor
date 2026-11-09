@@ -74,7 +74,7 @@ uv run streamlit run app.py        # app con los resultados (requiere haber corr
 
 ## Acceso a los Notebooks
 1. `01_eda.ipynb`: análisis exploratorio
-2. `02_preprocesamiento.ipynb`: limpieza, features, split sin fuga, escalado y selección
+2. `02_preprocesamiento.ipynb`: limpieza, features, split sin fuga y escalado
 3. `03_modelado.ipynb`: clasificación, regresión
 4. `04_evaluacion_seleccion.ipynb`: métricas, gráficas y selección del mejor modelo
 
