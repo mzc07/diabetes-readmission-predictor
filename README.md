@@ -43,7 +43,7 @@ Predecir si un paciente diabético será readmitido en menos de 30 días tras su
 ## Enlaces Destacados
 - Código: https://github.com/USUARIO/diabetes-readmission-predictor/tree/main/notebooks
 - Video: 
-- Repositorio: https://github.com/USUARIO/diabetes-readmission-predictor
+- Repositorio: [https://github.com/USUARIO/diabetes-readmission-predictor](https://github.com/mzc07/diabetes-readmission-predictor/tree/develop)
 - Diapositivas: [Descargar diapositivas](docs/assets/diapositivas.pdf)
 
 ---
