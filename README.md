@@ -1,54 +1,84 @@
 # Diabetes Readmission Predictor
 
-![Imagen ML](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuCI42BNejNN0PX3pC1k7_eX1-c-RQ_LCCPxMRDb-cisdGsVyBU_fyuAY&s=10)
+<!-- [Equipo] Banner 800x300: guardar como docs/assets/banner.png -->
+<p align="center"><img src="docs/assets/banner.png" width="800" height="300" alt="Banner del proyecto"></p>
 
-Predicción de reingreso hospitalario **en menos de 30 días** en pacientes diabéticos, usando el dataset de UCI "Diabetes 130-US Hospitals" (licencia CC BY 4.0).
+## 👥 Autores
+Nombre Apellido 1, Nombre Apellido 2, Nombre Apellido 3
 
-## Autores
-- [Martín Ariza (2251516)](https://github.com/mzc07)
-- [Ivanna Álvarez (2251805)](https://github.com/Ivannaalvarezs)
-- [María Rueda (2251801)](https://github.com/julianarp8-droid)
+## 🎯 Objetivo
+Predecir si un paciente diabético será readmitido en menos de 30 días tras su alta hospitalaria.
 
-## Índice
+## 📊 Dataset
+**Diabetes 130-US Hospitals for Years 1999-2008** (UCI Machine Learning Repository): más de 100.000 encuentros hospitalarios de pacientes diabéticos en 130 hospitales de EE. UU., con variables demográficas, clínicas y de medicación.
 
-| Índice | Notebook | Descripción |
-| --- | --- | --- |
-| [1. Datos](data/README.md) | [Análisis exploratorio](notebooks/01_eda.ipynb) | Origen del dataset, valores faltantes, variable objetivo y primeras relaciones con el reingreso. |
-| 2. Preprocesamiento | [Preprocesamiento](notebooks/02_preprocessing.ipynb) | Limpieza, agrupación de diagnósticos, split 80/20 y `Pipeline` de imputación + one-hot. |
-| 3. Modelado | [Modelado](notebooks/03_modeling.ipynb) | Comparación de Regresión logística, Árbol y Random Forest con validación cruzada. |
-| 4. Evaluación | [Evaluación](notebooks/04_evaluation.ipynb) | Resultado en test, importancia de variables y dependencia parcial. |
-| 5. App | [app.py](app.py) | App en Streamlit para ver los resultados y probar pacientes. |
+🔗 Descarga: https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008
 
-## Resultados
+## 🤖 Modelos
+Clasificación: Gaussian Naive Bayes, Decision Tree, Random Forest, SVM, Red Neuronal (MLP).
+Regresión (target ordinal NO=0, >30=1, <30=2): Decision Tree Regressor, Random Forest Regressor, SVR.
+Métricas: accuracy, precision, F1 (más recall y ROC-AUC), MSE, MAE, RMSE.
+Criterio de selección: F1 de la clase `<30` en validación cruzada (desempate por recall); en regresión, menor RMSE.
 
-| Modelo (CV 5 folds sobre train) | ROC-AUC | PR-AUC |
-|---|---|---|
-| Regresión logística | 0.648 | 0.165 |
-| Árbol de decisión | 0.622 | 0.149 |
-| **Random Forest (ganador)** | **0.651** | **0.165** |
+## 🔗 Enlaces
+- 💻 Código: https://github.com/USUARIO/diabetes-readmission-predictor/tree/main/notebooks
+- 🎥 Video: https://youtu.be/XXXXXXXX
+- 📦 Repositorio: https://github.com/USUARIO/diabetes-readmission-predictor
 
-En test el Random Forest obtiene ROC-AUC 0.649 y PR-AUC 0.172 (tasa base 0.09), con recall 0.47 y
-precisión 0.15 usando el umbral 0.51. Las variables más influyentes son el destino al alta
-(`discharge_disposition_id`) y las hospitalizaciones previas (`number_inpatient`).
+## 🖼 Imagen del proyecto
+<!-- [Equipo] Imagen 800x300 con título del proyecto e información de los estudiantes: docs/assets/portada.png -->
+<p align="center"><img src="docs/assets/portada.png" width="800" height="300" alt="Imagen del proyecto"></p>
 
-## Cómo ejecutarlo
-Requiere [uv](https://docs.astral.sh/uv/) y los CSV en `data/raw/` (`diabetic_data.csv`, `IDS_mapping.csv`).
+## 🎬 Video
+<!-- [Equipo] Máximo 5 minutos. Entregar el archivo y alojarlo también en YouTube -->
+[Ver en YouTube](https://youtu.be/XXXXXXXX) · Archivo: `video/presentacion.mp4`
 
-    git clone <url> && cd diabetes-readmission-predictor
-    uv sync
-    uv run jupyter lab notebooks/      # ejecutar los notebooks en orden (01 → 04)
-    uv run streamlit run app.py
+## 📑 Diapositivas
+[Descargar diapositivas](docs/assets/diapositivas.pdf)
 
-## Docker
-Primero hay que ejecutar los notebooks 03 y 04 para que exista la carpeta `artifacts/`.
+---
 
-    docker build -t diabetes .
-    docker run -p 8501:8501 diabetes   # app en http://localhost:8501
+## 🚀 Inicio Rápido
 
-## Estructura
-    data/raw/          CSV originales
-    notebooks/         01_eda · 02_preprocessing · 03_modeling · 04_evaluation
-    src/               data.py · features.py · models.py · evaluation.py
-    artifacts/         modelo entrenado y resultados (los generan los notebooks 03 y 04)
-    reports/figures/   gráficas de los notebooks
-    app.py             app de Streamlit
+### Prerrequisitos
+- Docker y Docker Compose (recomendado), **o** Python 3.12+ y [uv](https://docs.astral.sh/uv/)
+
+### Con Docker
+```bash
+git clone https://github.com/USUARIO/diabetes-readmission-predictor
+cd diabetes-readmission-predictor
+docker compose up --build
+# Abrir http://localhost:8888 y ejecutar los notebooks en orden
+# (en 01_eda.ipynb se descarga el dataset automáticamente)
+docker compose --profile app up app   # opcional: app Streamlit en http://localhost:8501
+```
+
+### Con uv
+```bash
+uv sync
+uv run python -m src.data          # descarga el dataset a data/raw
+uv run jupyter lab
+uv run python train.py             # alternativa: corre todo el pipeline y genera artifacts/
+uv run streamlit run app.py        # app con los resultados (requiere haber corrido train.py)
+```
+
+## 📓 Notebooks
+1. `01_eda.ipynb`: análisis exploratorio
+2. `02_preprocesamiento.ipynb`: limpieza, features, split sin fuga, escalado y selección
+3. `03_modelado.ipynb`: clasificación, regresión y red neuronal
+4. `04_evaluacion_seleccion.ipynb`: métricas, gráficas y selección del mejor modelo
+
+## 🗂 Estructura
+`data/raw/` (no versionado) · `data/processed/` · `notebooks/` · `src/` (data, features, models, evaluation) · `tests/` · `artifacts/` · `reports/figures/` · `docs/assets/` · `video/`
+
+## 🧪 Tests y calidad
+```bash
+uv run pytest
+uv run ruff check . && uv run ruff format --check .
+uv run pre-commit install   # opcional: ruff antes de cada commit
+```
+
+> ⚠️ Proyecto educativo: no sirve para decisiones clínicas reales.
+
+## 📄 Licencia
+MIT
