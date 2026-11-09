@@ -17,18 +17,18 @@ Predecir si un paciente diabético será readmitido en menos de 30 días tras su
  Descarga: https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008
 
 ## Modelos Utilizados
-### Clasificación: 
+#### Clasificación: 
 - Gaussian Naive Bayes (GNB)
 - Decision Tree (DT)
 - Random Forest (RF)
 - Support Vector Machine (SVM)
 
-### Regresión: 
+#### Regresión: 
 - Decision Tree Regressor
 - Random Forest Regressor
 - SVR
   
-###- Métricas:
+#### Métricas:
 - recall
 - precision
 - F1
@@ -36,7 +36,7 @@ Predecir si un paciente diabético será readmitido en menos de 30 días tras su
 - MAE
 - RMSE
   
-###- Criterio de selección:
+#### Criterio de selección:
 - Clasificación: F1 de la clase `<30` (desempate por recall)
 - Regresión: menor RMSE
 
