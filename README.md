@@ -1,7 +1,7 @@
 # Diabetes Readmission Predictor
 
-<!-- [Equipo] Banner 800x300: guardar como docs/assets/banner.png -->
-<p align="center"><img src="docs/assets/banner.png" width="800" height="300" alt="Banner del proyecto"></p>
+
+<p align="center"><img src="docs/assets/Banner/banner.jpg" width="800" height="300" alt="Banner del proyecto"></p>
 
 ## Autores
 - Ivanna Álvarez - 2251805
@@ -85,10 +85,4 @@ uv run streamlit run app.py        # app con los resultados (requiere haber corr
 ```bash
 uv run pytest
 uv run ruff check . && uv run ruff format --check .
-uv run pre-commit install   # opcional: ruff antes de cada commit
 ```
-## Uso del proyecto
-> Proyecto educativo: no sirve para decisiones clínicas reales.
-
-## Licencia
-MIT
