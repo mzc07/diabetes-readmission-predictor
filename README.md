@@ -3,38 +3,28 @@
 <!-- [Equipo] Banner 800x300: guardar como docs/assets/banner.png -->
 <p align="center"><img src="docs/assets/banner.png" width="800" height="300" alt="Banner del proyecto"></p>
 
-## 👥 Autores
-Nombre Apellido 1, Nombre Apellido 2, Nombre Apellido 3
+## Autores
+Ivanna Álvarez - 2251805, Martín Ariza - 2251516, Juliana Rueda - 2251801
 
-## 🎯 Objetivo
+## Objetivo del Proyecto
 Predecir si un paciente diabético será readmitido en menos de 30 días tras su alta hospitalaria.
 
-## 📊 Dataset
+## Dataset
 **Diabetes 130-US Hospitals for Years 1999-2008** (UCI Machine Learning Repository): más de 100.000 encuentros hospitalarios de pacientes diabéticos en 130 hospitales de EE. UU., con variables demográficas, clínicas y de medicación.
 
-🔗 Descarga: https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008
+ Descarga: https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008
 
-## 🤖 Modelos
-Clasificación: Gaussian Naive Bayes, Decision Tree, Random Forest, SVM, Red Neuronal (MLP).
-Regresión (target ordinal NO=0, >30=1, <30=2): Decision Tree Regressor, Random Forest Regressor, SVR.
-Métricas: accuracy, precision, F1 (más recall y ROC-AUC), MSE, MAE, RMSE.
-Criterio de selección: F1 de la clase `<30` en validación cruzada (desempate por recall); en regresión, menor RMSE.
+## Modelos Utilizados
+- Clasificación: Gaussian Naive Bayes (GNB), Decision Tree (DT), Random Forest (RF), Support Vector Machine (SVM).
+- Regresión: Decision Tree Regressor, Random Forest Regressor, SVR.
+- Métricas: recall, precision, F1, MSE, MAE, RMSE.
+- Criterio de selección: F1 de la clase `<30` en validación cruzada (desempate por recall); en regresión, menor RMSE.
 
-## 🔗 Enlaces
-- 💻 Código: https://github.com/USUARIO/diabetes-readmission-predictor/tree/main/notebooks
-- 🎥 Video: https://youtu.be/XXXXXXXX
-- 📦 Repositorio: https://github.com/USUARIO/diabetes-readmission-predictor
-
-## 🖼 Imagen del proyecto
-<!-- [Equipo] Imagen 800x300 con título del proyecto e información de los estudiantes: docs/assets/portada.png -->
-<p align="center"><img src="docs/assets/portada.png" width="800" height="300" alt="Imagen del proyecto"></p>
-
-## 🎬 Video
-<!-- [Equipo] Máximo 5 minutos. Entregar el archivo y alojarlo también en YouTube -->
-[Ver en YouTube](https://youtu.be/XXXXXXXX) · Archivo: `video/presentacion.mp4`
-
-## 📑 Diapositivas
-[Descargar diapositivas](docs/assets/diapositivas.pdf)
+## Enlaces Destacados
+- Código: https://github.com/USUARIO/diabetes-readmission-predictor/tree/main/notebooks
+- Video: 
+- Repositorio: https://github.com/USUARIO/diabetes-readmission-predictor
+- Diapositivas: [Descargar diapositivas](docs/assets/diapositivas.pdf)
 
 ---
 
