@@ -41,10 +41,10 @@ Predecir si un paciente diabético será readmitido en menos de 30 días tras su
 - Regresión: menor RMSE
 
 ## Enlaces Destacados
-- Código: https://github.com/USUARIO/diabetes-readmission-predictor/tree/main/notebooks
-- Video: 
+- Código: (https://github.com/mzc07/diabetes-readmission-predictor/tree/develop/notebooks)
+- Video: INSERTAR LINK DE YUTU
 - Repositorio: [https://github.com/USUARIO/diabetes-readmission-predictor](https://github.com/mzc07/diabetes-readmission-predictor/tree/develop)
-- Diapositivas: [Descargar diapositivas](docs/assets/diapositivas.pdf)
+- Diapositivas: INSERTAR LINK DE CANVA OSIOSI
 
 ---
 
