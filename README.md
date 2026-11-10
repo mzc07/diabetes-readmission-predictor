@@ -1,6 +1,6 @@
 # Diabetes Readmission Predictor
 
-<p align="center"><img src="docs/assets/Banner/banner.jpg" width="800" alt="Banner del proyecto"></p>
+<p align="center"><img src="docs/assets/Banner/banner.jpg" width="800" height="300" alt="Banner del proyecto"></p>
 
 ## Autores
 
@@ -21,21 +21,25 @@ Descarga: <https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for
 ## Modelos utilizados
 
 **Clasificación**
+
 - Gaussian Naive Bayes (GNB)
 - Decision Tree (DT)
 - Random Forest (RF)
 - Support Vector Machine (SVM)
 
 **Regresión**
+
 - Decision Tree Regressor
 - Random Forest Regressor
 - SVR
 
 **Métricas**
+
 - Recall, precision, F1
 - MSE, MAE, RMSE
 
 **Criterio de selección**
+
 - Clasificación: F1 de la clase `<30` (desempate por recall)
 - Regresión: menor RMSE
 
@@ -82,17 +86,17 @@ uv run streamlit run app.py        # app con los resultados (requiere haber corr
 
 ## Estructura
 
-| Ruta | Contenido |
-| --- | --- |
-| `data/raw/` | Datos originales (no versionado) |
-| `data/processed/` | Train/test procesados |
-| `notebooks/` | Notebooks del análisis |
-| `src/` | Código: data, features, models, evaluation |
-| `tests/` | Pruebas |
-| `artifacts/` | Modelos y resultados generados |
-| `reports/figures/` | Gráficas |
-| `docs/assets/` | Banner y diapositivas |
-| `video/` | Video del proyecto |
+| Ruta               | Contenido                                  |
+| ------------------ | ------------------------------------------ |
+| `data/raw/`        | Datos originales (no versionado)           |
+| `data/processed/`  | Train/test procesados                      |
+| `notebooks/`       | Notebooks del análisis                     |
+| `src/`             | Código: data, features, models, evaluation |
+| `tests/`           | Pruebas                                    |
+| `artifacts/`       | Modelos y resultados generados             |
+| `reports/figures/` | Gráficas                                   |
+| `docs/assets/`     | Banner y diapositivas                      |
+| `video/`           | Video del proyecto                         |
 
 ## Tests y calidad
 
