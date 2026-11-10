@@ -80,3 +80,6 @@ Descarga: <https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for
 uv run pytest
 uv run ruff check . && uv run ruff format --check .
 ```
+
+## Uso del Proyecto
+- Este proyecto solo para fines educativos, no se recomienda su uso en casos médicos reales.
