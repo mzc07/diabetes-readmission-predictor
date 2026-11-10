@@ -64,7 +64,6 @@ def get_models() -> dict[str, Pipeline]:
                 n_estimators=200,
                 min_samples_leaf=20,
                 class_weight="balanced",
-                n_jobs=-1,
                 random_state=SEED,
             )  # fmt: skip
         ),
@@ -94,7 +93,7 @@ def get_regressors() -> dict[str, Pipeline]:
         ),
         "RandomForestRegressor": build_pipeline(
             RandomForestRegressor(
-                n_estimators=200, min_samples_leaf=20, n_jobs=-1, random_state=SEED
+                n_estimators=200, min_samples_leaf=20, random_state=SEED
             )
         ),
         "SVR": build_pipeline(SVR(kernel="rbf")),
