@@ -52,30 +52,6 @@ Descarga: <https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for
 
 ---
 
-## Inicio rápido
-
-**Prerrequisitos:** Docker y Docker Compose (recomendado), **o** Python 3.12+ y [uv](https://docs.astral.sh/uv/).
-
-### Con Docker
-
-```bash
-git clone https://github.com/mzc07/diabetes-readmission-predictor
-cd diabetes-readmission-predictor
-docker compose up --build
-# Abrir http://localhost:8888 y ejecutar los notebooks en orden
-# (en 01_eda.ipynb se descarga el dataset automáticamente)
-docker compose --profile app up app   # opcional: app Streamlit en http://localhost:8501
-```
-
-### Con uv
-
-```bash
-uv sync
-uv run python -m src.data          # descarga el dataset a data/raw
-uv run jupyter lab
-uv run python train.py             # alternativa: corre todo el pipeline y genera artifacts/
-uv run streamlit run app.py        # app con los resultados (requiere haber corrido train.py)
-```
 
 ## Notebooks
 
