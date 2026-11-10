@@ -82,4 +82,4 @@ uv run ruff check . && uv run ruff format --check .
 ```
 
 ## Uso del Proyecto
-- Este proyecto solo para fines educativos, no se recomienda su uso en casos médicos reales.
+- Usar este proyecto solo para fines educativos, no se recomienda su uso en casos médicos reales.
