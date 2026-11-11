@@ -2,6 +2,10 @@
 
 <p align="center"><img src="docs/assets/Banner/banner.jpg" width="800" height="300" alt="Banner del proyecto"></p>
 
+Predicción de reingreso hospitalario en menos de 30 días para pacientes diabéticos, con modelos interpretables (SHAP) sobre datos reales de 130 hospitales de EE.UU.
+
+Predicción de reingreso hospitalario **en menos de 30 días** en pacientes diabéticos, usando el dataset de UCI "Diabetes 130-US Hospitals" (licencia CC BY 4.0).
+
 ## Autores
 
 - Ivanna Álvarez - 2251805
