@@ -177,21 +177,6 @@ def plot_regression_bars(metrics: pd.DataFrame) -> None:
     _save(fig, "comparativa_regresion.png")
 
 
-def plot_loss_curve(model: Pipeline, name: str = "MLP") -> None:
-    """Curva de pérdida de entrenamiento (y de validación interna) del MLP."""
-    clf = model.steps[-1][1]
-    fig, ax = plt.subplots(figsize=(7, 4))
-    ax.plot(clf.loss_curve_, label="pérdida (train)")
-    if getattr(clf, "validation_scores_", None) is not None:
-        ax2 = ax.twinx()
-        ax2.plot(clf.validation_scores_, color="C1", label="accuracy (validación)")
-        ax2.set_ylabel("accuracy de validación")
-        ax2.legend(loc="center right")
-    ax.set(title=f"{name}: curva de pérdida", xlabel="época", ylabel="pérdida")
-    ax.legend(loc="upper right")
-    _save(fig, "mlp_loss_curve.png")
-
-
 def plot_importance(table: pd.DataFrame, k: int = 20) -> None:
     fig, ax = plt.subplots(figsize=(7, 4))
     ax.plot(range(1, len(table) + 1), table["acumulada"])
