@@ -6,6 +6,8 @@ Los notebooks 03 y 04 usan estas mismas funciones de src/.
 """
 
 import json
+import os
+import warnings
 from pathlib import Path
 
 import joblib
@@ -21,6 +23,9 @@ from src.data import (
 )
 from src.features import add_features, importance_table
 from src.models import SEED, cross_validate_models, get_models, get_regressors, tune_model
+
+warnings.filterwarnings("ignore", category=UserWarning, module="sklearn.utils.parallel")
+os.environ["PYTHONWARNINGS"] = "ignore::UserWarning:sklearn.utils.parallel"
 
 ART = Path("artifacts")
 (ART / "models").mkdir(parents=True, exist_ok=True)
