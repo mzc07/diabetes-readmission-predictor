@@ -80,7 +80,6 @@ ev.plot_confusion_matrices(models, X_test, y_test)
 all_scores = ev.plot_threshold_curves(models, X_test, y_test)
 ev.plot_comparison(all_scores, y_test)
 ev.plot_metrics_bars(metrics)
-ev.plot_loss_curve(models["MLP"])
 print(metrics.to_string(index=False))
 for name, model in models.items():
     joblib.dump(model, ART / "models" / f"{name}.joblib")

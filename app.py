@@ -53,8 +53,8 @@ with tab_modelos:
         show("cv_lineas.png")
     show("matrices_confusion.png")
     st.subheader("Umbral de decisión por modelo")
-    names = ["GaussianNB", "RandomForest", "DecisionTree", "SVM", "MLP"]
-    for pair in (names[:2], names[2:4], names[4:]):
+    names = ["GaussianNB", "RandomForest", "DecisionTree", "SVM"]
+    for pair in (names[:2], names[2:4]):
         cols = st.columns(2)
         for col, n in zip(cols, pair, strict=True):
             with col:
@@ -67,8 +67,6 @@ with tab_modelos:
     with c2:
         show("comparativa_pr.png")
         show("comparativa_metricas.png")
-    st.subheader("Red neuronal (MLP): curva de pérdida")
-    show("mlp_loss_curve.png")
     st.subheader("Regresión (target ordinal NO=0, >30=1, <30=2)")
     st.success(f"Regresor ganador (menor RMSE): **{w.get('winner_regression', '-')}**")
     st.dataframe(load_csv("metrics_regression.csv"), hide_index=True)

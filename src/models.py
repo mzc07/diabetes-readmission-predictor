@@ -1,6 +1,5 @@
-"""Clasificadores (4 clásicos + MLP), regresores (3), búsqueda de hiperparámetros y CV."""
+"""Clasificadores (4 clásicos), regresores (3), búsqueda de hiperparámetros y CV."""
 
-import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.model_selection import (
@@ -10,7 +9,6 @@ from sklearn.model_selection import (
     cross_val_score,
 )
 from sklearn.naive_bayes import GaussianNB
-from sklearn.neural_network import MLPClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.svm import SVC, SVR
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
@@ -24,7 +22,6 @@ PARAM_GRIDS = {
     "DecisionTree": {"clf__max_depth": [3, 5, 8], "clf__min_samples_leaf": [20, 50]},
     "RandomForest": {"clf__n_estimators": [100, 200], "clf__min_samples_leaf": [10, 20, 40]},
     "SVM": {"clf__C": [0.5, 1.0, 2.0]},
-    "MLP": {"clf__alpha": [1e-4, 1e-2], "clf__hidden_layer_sizes": [(64, 32), (32, 16)]},
     "DecisionTreeRegressor": {"clf__max_depth": [3, 5, 8], "clf__min_samples_leaf": [20, 50]},
     "RandomForestRegressor": {
         "clf__n_estimators": [100, 200],
@@ -34,29 +31,13 @@ PARAM_GRIDS = {
 }
 
 
-class BalancedMLP(MLPClassifier):
-    """MLPClassifier no tiene class_weight: duplica al azar los casos positivos hasta
-    igualar a los negativos solo al entrenar (en cada fit, o sea solo con datos de train)."""
-
-    def fit(self, X, y):
-        rng = np.random.default_rng(self.random_state)
-        y = np.asarray(y)
-        pos, neg = np.flatnonzero(y == 1), np.flatnonzero(y == 0)
-        extra = rng.choice(pos, size=max(len(neg) - len(pos), 0), replace=True)
-        idx = rng.permutation(np.concatenate([np.arange(len(y)), extra]))
-        return super().fit(np.asarray(X)[idx], y[idx])
-
-
 def build_pipeline(est) -> Pipeline:
     """preprocesar (escalar) -> seleccionar top 20 -> modelo. Todo se ajusta solo con train."""
     return Pipeline([("prep", make_preprocessor()), ("select", make_selector(20)), ("clf", est)])
 
 
 def get_models() -> dict[str, Pipeline]:
-    """4 clasificadores clásicos + red neuronal (MLP).
-
-    GaussianNB no soporta class_weight; el MLP balancea con BalancedMLP (sobremuestreo).
-    """
+    """4 clasificadores clásicos. GaussianNB no soporta class_weight."""
     return {
         "GaussianNB": build_pipeline(GaussianNB()),
         "RandomForest": build_pipeline(
@@ -73,15 +54,6 @@ def get_models() -> dict[str, Pipeline]:
             )
         ),
         "SVM": build_pipeline(SVC(kernel="rbf", class_weight="balanced", random_state=SEED)),
-        "MLP": build_pipeline(
-            BalancedMLP(
-                hidden_layer_sizes=(64, 32),
-                early_stopping=True,
-                validation_fraction=0.1,
-                max_iter=300,
-                random_state=SEED,
-            )
-        ),
     }
 
 
@@ -92,9 +64,7 @@ def get_regressors() -> dict[str, Pipeline]:
             DecisionTreeRegressor(max_depth=5, min_samples_leaf=50, random_state=SEED)
         ),
         "RandomForestRegressor": build_pipeline(
-            RandomForestRegressor(
-                n_estimators=200, min_samples_leaf=20, random_state=SEED
-            )
+            RandomForestRegressor(n_estimators=200, min_samples_leaf=20, random_state=SEED)
         ),
         "SVR": build_pipeline(SVR(kernel="rbf")),
     }
