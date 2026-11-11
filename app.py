@@ -63,7 +63,6 @@ with tab_modelos:
     c1, c2 = st.columns(2)
     with c1:
         show("comparativa_umbral_f1.png")
-        show("comparativa_roc.png")
     with c2:
         show("comparativa_pr.png")
         show("comparativa_metricas.png")
