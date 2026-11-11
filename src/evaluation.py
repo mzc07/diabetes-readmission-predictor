@@ -18,8 +18,6 @@ from sklearn.metrics import (
     precision_recall_curve,
     precision_score,
     recall_score,
-    roc_auc_score,
-    roc_curve,
 )
 from sklearn.pipeline import Pipeline
 
@@ -45,7 +43,7 @@ def risk_score(model: Pipeline, X) -> np.ndarray:
 
 
 def compute_metrics(models: dict, X_test, y_test) -> pd.DataFrame:
-    """Accuracy, precision, recall, F1 (clase '<30') y AUC de cada modelo en test."""
+    """Accuracy, precision, recall, F1 (clase '<30') de cada modelo en test."""
     rows = []
     for name, model in models.items():
         pred = model.predict(X_test)
@@ -56,7 +54,6 @@ def compute_metrics(models: dict, X_test, y_test) -> pd.DataFrame:
                 "precision": precision_score(y_test, pred, zero_division=0),
                 "recall": recall_score(y_test, pred),
                 "f1": f1_score(y_test, pred),
-                "auc": roc_auc_score(y_test, risk_score(model, X_test)),
             }
         )
     return pd.DataFrame(rows).round(4)
@@ -134,7 +131,7 @@ def plot_threshold_curves(models: dict, X_test, y_test) -> dict:
 
 
 def plot_comparison(all_scores: dict, y_test) -> None:
-    """Gráficos comparativos: F1 vs. umbral, curvas PR y ROC de todos los modelos."""
+    """Gráficos comparativos: F1 vs. umbral, curvas PR de todos los modelos."""
     fig, ax = plt.subplots(figsize=(7, 4))
     for name, scores in all_scores.items():
         thr, _, _, f1 = _threshold_curves(y_test, scores)
@@ -150,15 +147,6 @@ def plot_comparison(all_scores: dict, y_test) -> None:
     ax.set(title="Curvas precision-recall", xlabel="recall", ylabel="precision")
     ax.legend()
     _save(fig, "comparativa_pr.png")
-
-    fig, ax = plt.subplots(figsize=(5.5, 5))
-    for name, scores in all_scores.items():
-        fpr, tpr, _ = roc_curve(y_test, scores)
-        ax.plot(fpr, tpr, label=f"{name} (AUC {roc_auc_score(y_test, scores):.3f})")
-    ax.plot([0, 1], [0, 1], color="gray", ls=":")
-    ax.set(title="Curvas ROC", xlabel="tasa de falsos positivos", ylabel="recall")
-    ax.legend()
-    _save(fig, "comparativa_roc.png")
 
 
 def plot_metrics_bars(metrics: pd.DataFrame) -> None:
