@@ -51,7 +51,7 @@ Descarga: <https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for
 
 - Código: [notebooks](https://github.com/mzc07/diabetes-readmission-predictor/tree/develop/notebooks)
 - Repositorio: [mzc07/diabetes-readmission-predictor](https://github.com/mzc07/diabetes-readmission-predictor/tree/develop)
-- Video: INSERTAR [Link al video](https://youtu.be/sPva7VRL4Vs)
+- Video: INSERTAR [Link al video](https://youtu.be/ILJ0xqFOehU)
 - Diapositivas: [Link a las diapositivas](https://canva.link/tkz1he8kmwj14jz)
 
 ---
